@@ -40,8 +40,8 @@ export default function Home() {
   }
 
   return (
-    <div className="body">
-      <nav className="nav bg-dark justify-content-end p-2">
+    <div>
+      <nav className="nav bg-dark justify-content-end fixed p-2 sticky">
         <button
           onClick={(event) => handleLogout(event)}
           className="nav-link active btn btn-sm btn-danger"
@@ -49,16 +49,18 @@ export default function Home() {
           Logout
         </button>
       </nav>
-      <div className="container">
+      <div className="container-fluid p-5">
         <h2 className="mt-5">List Mission</h2>
         <div className="mt-5" id="table">
-          <table className="table">
+          <table className="table ">
             <thead>
               <tr>
                 <th scope="col">No</th>
                 <th scope="col">Title</th>
                 <th scope="col">Experience</th>
-                <th scope="col">Description</th>
+                <th span="1" style={{ width: '20%' }} scope="col ">
+                  Description
+                </th>
                 <th scope="col">Contributor</th>
                 <th scope="col">Status</th>
                 <th scope="col">Actions</th>
@@ -66,7 +68,7 @@ export default function Home() {
             </thead>
             <tbody>
               {missions.map((mission, index) => (
-                <tr key={mission._id}>
+                <tr className="tableRow" key={mission._id}>
                   <th scope="row">{index + 1}</th>
                   <td>{mission.title}</td>
                   <td>{mission.experience}</td>
