@@ -15,6 +15,7 @@ export default function UpdateMovieModal({ id }) {
     if (id) {
       dispatch(getMissionById(id))
     }
+    // eslint-disable-next-line
   }, [id])
 
   const mission = useSelector((state) => state.mission)
@@ -25,6 +26,7 @@ export default function UpdateMovieModal({ id }) {
     setExperience(mission.experience)
     setContributor(mission.contributor)
     setStatus(mission.status)
+    // eslint-disable-next-line
   }, [mission])
 
   const editMission = (e) => {
@@ -52,7 +54,7 @@ export default function UpdateMovieModal({ id }) {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">
-              Update Movie
+              Update Mission
             </h5>
             <button
               type="button"
@@ -104,30 +106,21 @@ export default function UpdateMovieModal({ id }) {
                 />
               </div>
               <div className="mb-3">
-                <label for="exampleInputEmail1" class="form-label">
+                <label htmlFor="exampleInputEmail1" className="form-label">
                   Status
                 </label>
                 <select
-                  class="form-select"
+                  className="form-select"
                   aria-label="Default select example"
                   value={status}
                   onChange={(e) => setStatus(e.target.value)}
                 >
                   <option disabled value="">
-                    --------------------------- Select Status
-                    ---------------------------
+                    Select Status
                   </option>
                   <option>false</option>
                   <option>true</option>
                 </select>
-                {/* <label className="form-label">Status</label>
-                <input 
-                  type="checkbox" 
-                  // className="form-control" 
-                  aria-describedby="emailHelp" 
-                  checked={status}
-                  onChange={(e) => setStatus(e.target.checked)}
-                /> */}
               </div>
             </div>
             <div className="modal-footer">

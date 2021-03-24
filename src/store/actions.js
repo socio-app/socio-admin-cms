@@ -1,6 +1,5 @@
 import { swal, swalLoading, swalClose } from '../helpers/swal'
 import axios from '../api/axios'
-import Swal from 'sweetalert2'
 
 export function setMissions(payload) {
   return { type: 'MISSIONS/SET_MISSIONS', payload }
@@ -23,7 +22,7 @@ export function fetchMissions(payload) {
         url: `/missions`,
       })
       dispatch(setMissions(response.data))
-    } catch(err) {
+    } catch (err) {
       console.log(err)
     }
   }
@@ -39,7 +38,7 @@ export function getMissionById(payload) {
       })
       console.log(response, 'dari action')
       dispatch(setMission(response.data))
-    } catch(err) {
+    } catch (err) {
       console.log(err)
     }
   }
@@ -49,7 +48,7 @@ export function updateMission(payload) {
   return async (dispatch, getState) => {
     try {
       dispatch(setLoading(true))
-      const response = await axios({
+      await axios({
         method: 'put',
         url: `/missions/${payload._id}`,
         data: {
@@ -61,7 +60,7 @@ export function updateMission(payload) {
         }
       })
       dispatch(fetchMissions())
-    } catch(err) {
+    } catch (err) {
       console.log(err)
     }
   }
@@ -70,14 +69,14 @@ export function updateMission(payload) {
 export function deleteMission(payload) {
   return async (dispatch, getState) => {
     try {
-      console.log(payload,'action>>>>')
+      console.log(payload, 'action>>>>')
       dispatch(setLoading(true))
       await axios({
         method: 'delete',
         url: `/missions/${payload}`,
       })
       dispatch(fetchMissions())
-    } catch(err) {
+    } catch (err) {
       console.log(err)
     }
   }
