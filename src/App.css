@@ -3,24 +3,34 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+/* @media (prefers-reduced-motion: no-preference) {
   .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+    animation: App-logo-spin infinite 5s linear;
   }
+} */
+
+.socioLogo {
+  height: 300px;
 }
 
-.App-header {
-  background-color: #282c34;
+.large-input {
+  height: 500px;
+}
+
+.custom-button {
+  width: 300px;
+}
+
+.App-body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 
