@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import '../index.css';
-import { deleteMission, fetchMissions } from '../store/actions';
+import { useDispatch, useSelector } from 'react-redux'
+import '../index.css'
+import { deleteMission, fetchMissions } from '../store/actions'
 import UpdateMissionModal from '../components/UpdateMissionModal.js'
 import { useHistory } from 'react-router-dom'
-
 
 export default function Home() {
   const history = useHistory()
@@ -22,7 +21,7 @@ export default function Home() {
     // eslint-disable-next-line
   }, [])
 
-  const missions = useSelector((state => state.missions))
+  const missions = useSelector((state) => state.missions)
 
   const updateMission = (e, id) => {
     e.preventDefault()
@@ -41,13 +40,18 @@ export default function Home() {
   }
 
   return (
-    <section>
+    <div className="body">
       <nav className="nav bg-dark justify-content-end p-2">
-        <button onClick={(event) => handleLogout(event)} className="nav-link active btn btn-sm btn-danger">Logout</button>
+        <button
+          onClick={(event) => handleLogout(event)}
+          className="nav-link active btn btn-sm btn-danger"
+        >
+          Logout
+        </button>
       </nav>
       <div className="container">
         <h2 className="mt-5">List Mission</h2>
-        <div className="mt-5">
+        <div className="mt-5" id="table">
           <table className="table">
             <thead>
               <tr>
@@ -61,34 +65,39 @@ export default function Home() {
               </tr>
             </thead>
             <tbody>
-              {
-                missions.map((mission, index) => (
-                  <tr key={mission._id}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{mission.title}</td>
-                    <td>{mission.experience}</td>
-                    <td>{mission.description}</td>
-                    <td>{mission.contributor}</td>
-                    <td>{String(mission.status)}</td>
-                    <td>
-                      <button
-                        className="btn btn-outline-primary"
-                        data-bs-toggle="modal"
-                        data-bs-target="#example-update-mission"
-                        data-bs-whatever="@getbootstrap"
-                        onClick={(e) => updateMission(e, mission._id)}>
-                        Edit Status
+              {missions.map((mission, index) => (
+                <tr key={mission._id}>
+                  <th scope="row">{index + 1}</th>
+                  <td>{mission.title}</td>
+                  <td>{mission.experience}</td>
+                  <td>{mission.description}</td>
+                  <td>{mission.contributor}</td>
+                  <td>{String(mission.status)}</td>
+                  <td>
+                    <button
+                      className="btn btn-outline-primary"
+                      data-bs-toggle="modal"
+                      data-bs-target="#example-update-mission"
+                      data-bs-whatever="@getbootstrap"
+                      onClick={(e) => updateMission(e, mission._id)}
+                    >
+                      Edit Status
                     </button>
-                      <button className="btn btn-outline-danger" onClick={(e) => delMission(e, mission._id)} style={{ marginLeft: 10 }}>Delete</button>
-                    </td>
-                  </tr>
-                ))
-              }
+                    <button
+                      className="btn btn-outline-danger"
+                      onClick={(e) => delMission(e, mission._id)}
+                      style={{ marginLeft: 10 }}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
       <UpdateMissionModal id={id} />
-    </section>
+    </div>
   )
 }

@@ -4,7 +4,94 @@
 
 .App-logo {
   height: 10;
+  width: 10;
   pointer-events: none;
+}
+
+/* .body-background-image {
+  background-image: url('https://wallpaperaccess.com/full/1670733.jpg');
+  background-attachment: fixed;
+
+  background-size: cover;
+  object-fit: cover;
+  animation: shrink 12s infinite alternate;
+  stroke-opacity: inherit;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+} */
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #60a3bc !important;
+}
+.user_card {
+  height: 400px;
+  width: 350px;
+  margin-top: 120px;
+  margin-bottom: auto;
+  background: 'transparent';
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  box-shadow: 0 4px 8px 0 rgba(255, 251, 251, 0.2),
+    0 6px 20px 0 rgba(255, 255, 255, 0.19);
+  -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+    0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 5px;
+}
+.brand_logo_container {
+  position: absolute;
+  height: 120px;
+  width: 170px;
+  top: -90px;
+  border-radius: 50%;
+  background: 'transparent';
+  padding: 10px;
+  text-align: center;
+  left: 68px;
+}
+.brand_logo {
+  height: 200px;
+  width: 200px;
+}
+.textAdmin {
+  left: 68px;
+  padding: 10px;
+}
+.form_container {
+  margin-top: 60px;
+}
+.login_btn {
+  width: 100%;
+  background: #c0392b !important;
+  color: white !important;
+}
+.login_btn:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.login_container {
+  padding: 0 2rem;
+}
+.input-group-text {
+  background: #c0392b !important;
+  color: white !important;
+  border: 0 !important;
+  border-radius: 0.25rem 0 0 0.25rem !important;
+}
+.input_user,
+.input_pass:focus {
+  box-shadow: none !important;
+  outline: 0px !important;
+}
+.custom-checkbox .custom-control-input:checked ~ .custom-control-label::before {
+  background-color: #c0392b !important;
 }
 
 /* @media (prefers-reduced-motion: no-preference) {
@@ -12,7 +99,9 @@
     animation: App-logo-spin infinite 5s linear;
   }
 } */
-
+#table {
+  height: 100vh;
+}
 .socioLogo {
   height: 300px;
 }
@@ -36,13 +125,4 @@
 
 .App-link {
   color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

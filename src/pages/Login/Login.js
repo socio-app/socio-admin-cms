@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './Login.css'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import Logo from '../../components/sociologo1.png'
 
 const Login = () => {
   const history = useHistory()
@@ -21,7 +22,7 @@ const Login = () => {
       const { data } = await axios({
         url: 'http://localhost:3001/admin/login',
         data: { email, password },
-        method: 'POST'
+        method: 'POST',
       })
       localStorage.setItem('access_token', data.access_token)
       history.push('/')
@@ -31,21 +32,52 @@ const Login = () => {
     }
   }
   return (
-    <div>
-      <h1 className="text-center my-5">Sign In</h1>
-      <form onSubmit={(event) => handleSubmit(event)}>
-        <div className="mb-3 row justify-content-center">
-          <div className="col-3">
-            <input onChange={(event) => setEmail(event.target.value)} value={email} type="text" className="form-control" placeholder="Email" />
+    <div className="body-background-image">
+      <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+          <div class="user_card">
+            <div class="d-flex justify-content-center">
+              <div class="brand_logo_container">
+                <img src={Logo} class="brand_logo" alt="Logo" />
+              </div>
+            </div>
+            <div class="d-flex justify-content-center form_container">
+              <form onSubmit={(event) => handleSubmit(event)}>
+                <div class="input-group mb-3">
+                  <h3> ADMIN ONLY !!!</h3>
+                </div>
+                <div class="input-group mb-3">
+                  <div class="input-group-append"></div>
+
+                  <input
+                    onChange={(event) => setEmail(event.target.value)}
+                    value={email}
+                    type="text"
+                    className="form-control"
+                    placeholder="Email"
+                  />
+                </div>
+                <div class="input-group mb-2">
+                  <div class="input-group-append"></div>
+                  <input
+                    onChange={(event) => setPassword(event.target.value)}
+                    value={password}
+                    type="password"
+                    className="form-control"
+                    placeholder="Password"
+                  />
+                </div>
+                <div class="form-group"></div>
+                <div class="d-flex justify-content-center mt-3 login_container">
+                  <button type="submit" name="button" class="btn login_btn">
+                    Sign In
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-        <div className="mb-3 row justify-content-center">
-          <div className="col-3">
-            <input onChange={(event) => setPassword(event.target.value)} value={password} type="password" className="form-control" placeholder="Password" />
-          </div>
-        </div>
-        <button className="btn btn-primary my-3" type="submit">Sign In</button>
-      </form>
+      </div>
     </div>
   )
 }
