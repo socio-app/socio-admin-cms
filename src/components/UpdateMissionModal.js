@@ -17,7 +17,7 @@ export default function UpdateMovieModal({ id }) {
     }
   }, [id])
 
-  const mission = useSelector(state => state.mission)
+  const mission = useSelector((state) => state.mission)
 
   useEffect(() => {
     setTitle(mission.title)
@@ -29,70 +29,94 @@ export default function UpdateMovieModal({ id }) {
 
   const editMission = (e) => {
     e.preventDefault()
-    dispatch(updateMission({
-      _id: id,
-      title: title,
-      experience: experience,
-      description: description,
-      contributor: contributor,
-      status: status
-    }))
+    dispatch(
+      updateMission({
+        _id: id,
+        title: title,
+        experience: experience,
+        description: description,
+        contributor: contributor,
+        status: status === 'true' ? true : false,
+      })
+    )
   }
 
   return (
-    <div className="modal fade" id="example-update-mission" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div
+      className="modal fade"
+      id="example-update-mission"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
-            <h5 className="modal-title" id="exampleModalLabel">Update Movie</h5>
-            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 className="modal-title" id="exampleModalLabel">
+              Update Movie
+            </h5>
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
           </div>
           <form onSubmit={editMission}>
             <div className="modal-body">
               <div className="mb-3">
                 <label className="form-label">Title</label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  aria-describedby="emailHelp" 
+                <input
+                  type="text"
+                  className="form-control"
+                  aria-describedby="emailHelp"
                   value={title}
                   onChange={(e) => setTitle(e.target.value)}
                 />
               </div>
               <div className="mb-3">
                 <label className="form-label">Experience</label>
-                <input 
-                  type="number" 
-                  className="form-control" 
-                  aria-describedby="emailHelp" 
+                <input
+                  type="number"
+                  className="form-control"
+                  aria-describedby="emailHelp"
                   value={experience}
                   onChange={(e) => setExperience(e.target.value)}
                 />
               </div>
               <div className="mb-3">
                 <label className="form-label">Description</label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  aria-describedby="emailHelp" 
+                <input
+                  type="text"
+                  className="form-control"
+                  aria-describedby="emailHelp"
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
                 />
               </div>
               <div className="mb-3">
                 <label className="form-label">Contributor</label>
-                <input 
-                  type="text" 
-                  className="form-control" 
-                  aria-describedby="emailHelp" 
+                <input
+                  type="text"
+                  className="form-control"
+                  aria-describedby="emailHelp"
                   value={contributor}
                   onChange={(e) => setContributor(e.target.value)}
                 />
               </div>
               <div className="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Status</label>
-                <select class="form-select" aria-label="Default select example" value={status} onChange={(e) => setStatus(e.target.value)}>
-                  <option disabled value="">---------------------------  Select Status  ---------------------------</option>
+                <label for="exampleInputEmail1" class="form-label">
+                  Status
+                </label>
+                <select
+                  class="form-select"
+                  aria-label="Default select example"
+                  value={status}
+                  onChange={(e) => setStatus(e.target.value)}
+                >
+                  <option disabled value="">
+                    --------------------------- Select Status
+                    ---------------------------
+                  </option>
                   <option>false</option>
                   <option>true</option>
                 </select>
@@ -108,10 +132,16 @@ export default function UpdateMovieModal({ id }) {
             </div>
             <div className="modal-footer">
               <div className="mt-4 d-flex justify-content-center w-100">
-                <button className="btn btn-primary w-100" data-bs-dismiss="modal" onClick={editMission}>Submit</button>
+                <button
+                  className="btn btn-primary w-100"
+                  data-bs-dismiss="modal"
+                  onClick={editMission}
+                >
+                  Submit
+                </button>
               </div>
             </div>
-            </form>
+          </form>
         </div>
       </div>
     </div>
