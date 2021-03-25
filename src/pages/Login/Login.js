@@ -1,35 +1,46 @@
 import React, { useState, useEffect } from 'react'
 import './Login.css'
-import axios from 'axios'
 import { useHistory } from 'react-router-dom'
 import Logo from '../../components/sociologo1.png'
+import { LoginAdmin } from '../../store/actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Login = () => {
   const history = useHistory()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
+  const isLogin = useSelector(state => state.isLogin)
 
   useEffect(() => {
     if (localStorage.getItem('access_token')) {
       history.push('/')
     }
     // eslint-disable-next-line
-  }, [])
+  }, [history])
 
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    try {
-      const { data } = await axios({
-        url: 'http://localhost:3001/admin/login',
-        data: { email, password },
-        method: 'POST',
-      })
-      localStorage.setItem('access_token', data.access_token)
+  useEffect(() => {
+    if (isLogin) {
       history.push('/')
-      console.log(data.access_token)
-    } catch (err) {
-      console.log(err)
     }
+  }, [isLogin, history])
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    dispatch(LoginAdmin({email, password}))
+    // history.push('/')
+    // try {
+    //   const { data } = await axios({
+    //     url: 'http://localhost:3001/admin/login',
+    //     data: { email, password },
+    //     method: 'POST',
+    //   })
+    //   localStorage.setItem('access_token', data.access_token)
+    //   history.push('/')
+    //   console.log(data.access_token)
+    // } catch (err) {
+    //   console.log(err)
+    // }
   }
   return (
     <div className="body-background-image">

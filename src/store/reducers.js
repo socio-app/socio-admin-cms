@@ -2,6 +2,7 @@ const initialState = {
   missions: [],
   mission: {},
   loading: false,
+  isLogin: false
 }
 
 function reducer(state = initialState, action) {
@@ -16,6 +17,9 @@ function reducer(state = initialState, action) {
 
     case 'MISSIONS/SET_LOADING':
       return { ...state, loading: payload }
+
+    case 'LOGIN/SET_LOGIN':
+      return { ...state, isLogin: payload }
 
     default:
       return state

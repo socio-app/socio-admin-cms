@@ -13,6 +13,10 @@ export function setLoading(payload) {
   return { type: 'MISSIONS/SET_LOADING', payload }
 }
 
+export function setLogin(payload) {
+  return { type: 'LOGIN/SET_LOGIN', payload }
+}
+
 export function fetchMissions(payload) {
   return async (dispatch, getState) => {
     try {
@@ -108,6 +112,26 @@ export function postMission(payload) {
       console.log(err)
       swalClose()
       swal('Failed to upload mission to server', 'error')
+    }
+  }
+}
+
+
+export function LoginAdmin(payload) {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios({
+        method: "post",
+        url: `/admin/login`,
+        data: {
+          email: payload.email,
+          password: payload.password
+        }
+      })
+      dispatch(setLogin(true))
+      localStorage.setItem('access_token', data.access_token)
+    } catch(err) {
+      console.log(err)
     }
   }
 }

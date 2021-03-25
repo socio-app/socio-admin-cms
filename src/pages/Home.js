@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import '../index.css'
-import { deleteMission, fetchMissions } from '../store/actions'
+import { deleteMission, fetchMissions, setLogin } from '../store/actions'
 import UpdateMissionModal from '../components/UpdateMissionModal.js'
 import { useHistory } from 'react-router-dom'
 
@@ -37,6 +37,7 @@ export default function Home() {
     event.preventDefault()
     localStorage.clear()
     history.push('/login')
+    dispatch(setLogin(false))
   }
 
   return (
